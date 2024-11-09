@@ -8,6 +8,6 @@ Trivia WebApp
   -Selectable Themes
 	
 Animal Breeder
-  -pediology tracking
-  -Maybe use database to see individual animals ans track their health
-	
+-pediology tracking
+-Maybe use database to see individual animals ans track their health	
+
