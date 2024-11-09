@@ -16,7 +16,7 @@
         text-align: left;
     }
 
-    .Answer1 {
+    .Answer {
         border: none;
         color: black;
         padding: 15px 32px;
@@ -28,7 +28,7 @@
         cursor: pointer;
     }
 
-    .Answer2 {
+    /* .Answer2 {
         border: none;
         color: black;
         padding: 15px 32px;
@@ -62,7 +62,7 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-    }
+    } */
 </style>
 <title>
     WonderLand Trivia
@@ -75,20 +75,19 @@
         Question: What color is Alice and wonderlands hair?
     </h1>
 </div>
-<button id="answer1" class="Answer1" onclick="checkAnswer(1)">
+<button id="answer1" class="Answer" onclick="checkAnswer(1)">
     Answer A
 </button>
-<button id="answer2" class="Answer2" onclick="checkAnswer(2)">
+<button id="answer2" class="Answer" onclick="checkAnswer(2)">
     Answer B
 </button>
-<button id="answer3" class="Answer3" onclick="checkAnswer(3)">
+<button id="answer3" class="Answer" onclick="checkAnswer(3)">
     Answer C
 </button>
-<button id="answer4" class="Answer4" onclick="checkAnswer(4)">
+<button id="answer4" class="Answer" onclick="checkAnswer(4)">
     Answer D
 </button>
 <script>
-    //Comment 1
     let questionElement = document.getElementById("question");
 
     var margin = 0;
@@ -105,18 +104,21 @@
         margin += 10;
 
     }
-    someVar = 0
-    var nextVar = setInterval(flashColors, 100);
+    let answer = document.getElementById("answer1");
+ 
+    var myVar = setInterval(moveDown, 90);
+    var topMargin = 0;
 
-    function flashColors() {
-        if(someVar == 0) {
-            someVar = 1;
-            document.body.style.backgroundColor = "blue"
+    let l = window.screen.height;
+
+    function moveDown() {
+        if (margin == l) {
+            topMargin = 0;
         } else {
-            someVar = 0;
-        document.body.style.backgroundColor = "white"
+            answer.style.marginTop = topMargin + "px";
+        }
+        topMargin += 10;
     }
-}
     const questions = [
         { question: "What is the White Rabbit’s catchphrase?", correct: "D", options: ["A. Let's go, let's go, let's go!", "B. Hurry up, hurry up, hurry up!", "C. My time has come! ", "D. I'm late, I'm late, I'm late!"] },
         { question: "How many songs are in Alice in Wonderland?", correct: "B", options: ["A. 7", "B. 14", "C. 11", "D. 5"] },
@@ -144,6 +146,8 @@
         { question: "Which character did not appear in Alice in Wonderland's book?", correct: "A", options: ["The Doorknob", "The Dormouse", "The Dodo", "The Frog-Footman"] },
         { question: "Where is a hidden Mickey in the movie?", correct: "C", options: ["A. In the scene where Alice meets the caterpiller it is behind a leaf stem.", "In the scene where Alice meets the Cheshire Cat, it is visable next to a sign on the tree.", "C.  In the scene where Alice grows and gets stuck in the White Rabbit's house, in Dodo bird's pipe flame", "D. In the tea party scene, it is inside the incriptions of the tea pots"] }
     ];
+    //const punishments = []
+
 
     function loadNewQuestion() {
         if (i < questions.length - 1) {
@@ -167,6 +171,7 @@
         }
         else {
             setInterval(moveRight, 90)
+            setInterval(moveDown, 90)
         }
         document.getElementById("score").innerHTML = "Score: " + points + "/2500"
         loadNewQuestion()
@@ -180,6 +185,5 @@
         document.getElementById("answer4").innerHTML = questions[i].options[3]
     }
     firstRun()
-    //const fs = require('fs');
 </script>
 </html>
