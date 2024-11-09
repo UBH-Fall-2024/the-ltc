@@ -7,7 +7,7 @@ Trivia WebApp
   -Optional:
   -Selectable Themes
 	
-Animal Breeder
+Animal Breeder:
 -pediology tracking
 -Maybe use database to see individual animals ans track their health	
 
