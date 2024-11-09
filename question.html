@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
+    
     <style>
         .question {
+            width:300px;
+            height:70px;
             border: 5px outset red;
             background-color: lightblue;
             text-align: center;
+            font-size: 10px;
         }
         .score {
             border: 5px outset black;
@@ -61,7 +65,7 @@
         WonderLand Trivia
     </title>
     <div id="score" class="score">
-
+        Score: 0/10
     </div>
     <div id="question" class="question">
         <h1>
@@ -80,5 +84,24 @@
     <button id="answer4" class="Answer4" onclick= "checkAnswer(4)">
         Answer D
     </button>
+    <script>
+        let ball = document.getElementById("question");
+
+    var myVar = setInterval(spostaDiv, 90);
+    var margin = 0;
+
+    let l = window.screen.width;
+    let w = 1300;
+
+function spostaDiv() {
+    console.log(w);
+    if (margin == w) {
+        margin = 0 + "px";
+    } else {
+        ball.style.marginLeft = margin + "px";
+    }
+    margin += 10;
+   }
+       </script>
     
 </html>
