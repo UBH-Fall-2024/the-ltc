@@ -88,6 +88,7 @@
     Answer D
 </button>
 <script>
+    //Comment 1
     let questionElement = document.getElementById("question");
 
     var margin = 0;
@@ -104,6 +105,18 @@
         margin += 10;
 
     }
+    someVar = 0
+    var nextVar = setInterval(flashColors, 100);
+
+    function flashColors() {
+        if(someVar == 0) {
+            someVar = 1;
+            document.body.style.backgroundColor = "blue"
+        } else {
+            someVar = 0;
+        document.body.style.backgroundColor = "white"
+    }
+}
     const questions = [
         { question: "What is the White Rabbit’s catchphrase?", correct: "D", options: ["A. Let's go, let's go, let's go!", "B. Hurry up, hurry up, hurry up!", "C. My time has come! ", "D. I'm late, I'm late, I'm late!"] },
         { question: "How many songs are in Alice in Wonderland?", correct: "B", options: ["A. 7", "B. 14", "C. 11", "D. 5"] },
