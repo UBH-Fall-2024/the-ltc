@@ -6,6 +6,11 @@
             background-color: lightblue;
             text-align: center;
         }
+        .score {
+            border: 5px outset black;
+            background-color: white;
+            text-align: left;
+        }
         .Answer1 {
         border: none;
         color: black;
@@ -55,22 +60,24 @@
     <title>
         WonderLand Trivia
     </title>
-    
+    <div id="score" class="score">
+
+    </div>
     <div id="question" class="question">
         <h1>
             Question: What color is Alice and wonderlands hair?
         </h1>
     </div>
-    <button id="answer1" class="Answer1">
+    <button id="answer1" class="Answer1" onclick= "checkAnswer(1)">
         Answer A
     </button>
-    <button id="answer2" class="Answer2">
+    <button id="answer2" class="Answer2" onclick= "checkAnswer(2)">
         Answer B
     </button>
-    <button id="answer3" class="Answer3">
+    <button id="answer3" class="Answer3" onclick= "checkAnswer(3)">
         Answer C
     </button>
-    <button id="answer4" class="Answer4">
+    <button id="answer4" class="Answer4" onclick= "checkAnswer(4)">
         Answer D
     </button>
     
