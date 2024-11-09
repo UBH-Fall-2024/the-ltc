@@ -1,0 +1,57 @@
+
+<html>
+    <head>
+        <link rel = "stylesheet" type="text/css" href="leaderboard.css">
+        <title>Current Rankings</title>
+    </head>
+
+    <h1 class ="general" id="title">🏆 Current Rankings 🏆</h1>
+    <body>
+        <table class="general" id="table">
+         <th>Username</th>
+         <th>Points</th>
+
+            <tr>
+            <td>Arjun</td>
+            <td>1000 </td>
+            </tr>
+    </table>
+    </body>
+</html>
+
+<script>
+
+readFile("rankings.csv");
+
+    function readFile(file) {
+        if (!file || !FileReader) {
+            return;
+        }
+
+        var reader = new FileReader();
+
+        // reader.onload = function (e) {
+        //    // toTable(e.target.result);
+        // };
+
+        reader.readAsText(file);
+        
+        console.log(reader);
+    }
+
+    
+</script>
+
+<!--
+
+Source of Rankings: rankings.csv
+
+Format:
+
+USERNAME, RANKING
+USERNAME, RANKING
+USERNAME, RANKING
+USERNAME, RANKING
+
+
+-->
