@@ -136,15 +136,16 @@
  
     var topMargin = 0;
 
-    let l = window.screen.height;
+    let l = 500;
 
     function moveDown() {
-        if (margin == l) {
+        console.log(l);
+        if (topMargin == l) {
             topMargin = 0;
         } else {
             answer.style.marginTop = topMargin + "px";
         }
-        topMargin += 10;
+        topMargin += 5;
     }
 
     var someVar = 0
