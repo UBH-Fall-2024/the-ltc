@@ -8,39 +8,62 @@
     <h1 class ="general" id="title">🏆 Current Rankings 🏆</h1>
     <body>
         <table class="general" id="table">
-         <th>Username</th>
-         <th>Points</th>
-
-            <tr>
-            <td>Arjun</td>
-            <td>1000 </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- CSV data will populate here -->
+            </tbody>
     </table>
     </body>
-</html>
+
+
+
 
 <script>
+ // Load the CSV file when the page loads
+ document.addEventListener('DOMContentLoaded', loadCSV);
 
-readFile("rankings.csv");
+function loadCSV() {
+    fetch('rankings.csv')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(csvData => populateTable(csvData))
+        .catch(error => console.error('Error fetching the CSV file:', error));
+}
 
-    function readFile(file) {
-        if (!file || !FileReader) {
-            return;
+function populateTable(csvData) {
+    const tableBody = document.getElementById('table').querySelector('tbody');
+    tableBody.innerHTML = ''; // Clear any existing data
+
+    const rows = csvData.trim().split('\n');
+    rows.forEach(row => {
+        const [username, points] = row.split(',');
+        if (username && points) {
+            const newRow = document.createElement('tr');
+            
+            const usernameCell = document.createElement('td');
+            usernameCell.textContent = username.trim();
+            newRow.appendChild(usernameCell);
+
+            const pointsCell = document.createElement('td');
+            pointsCell.textContent = points.trim();
+            newRow.appendChild(pointsCell);
+
+            tableBody.appendChild(newRow);
         }
-
-        var reader = new FileReader();
-
-        // reader.onload = function (e) {
-        //    // toTable(e.target.result);
-        // };
-
-        reader.readAsText(file);
-        
-        console.log(reader);
-    }
-
-    
+    });
+}
 </script>
+
+</html>
 
 <!--
 
