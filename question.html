@@ -131,6 +131,8 @@
 
 
     <script>
+        //let i = 0;
+        //let maxPoints = 0;
         let questionElement = document.getElementById("question");
         const rect = question.getBoundingClientRect();
         var margin = rect.left + window.scrollX;
@@ -269,10 +271,10 @@
                 else if (randomPun.localeCompare("flash") == 0) {
                     invertBackground = setInterval(flashBackground, 120)
 
-                setInterval(flashBackground, 120)
+                setInterval(flashBackground, 200)
             } 
             else if(randomPun.localeCompare("lang") == 0){
-                setInterval(changeLanguage, 1000)
+                setInterval(changeLanguage, 1150)
                 }
             }
             document.getElementById("score").innerHTML = username + "'s"+ " score: " + points + "/" + maxPoints
@@ -292,7 +294,7 @@
         }
         let username = name;
         let questionCount = 5;
-        //firstRun("name", 10);
+        firstRun("name", 10);
     </script>
 
 </html>
