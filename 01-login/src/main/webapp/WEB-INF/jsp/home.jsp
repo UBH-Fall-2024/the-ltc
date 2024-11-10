@@ -1,36 +1,33 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html lang="en">
+<!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home Page</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/jumbotron-narrow.css">
-    <link rel="stylesheet" type="text/css" href="/css/home.css">
-    <link rel="stylesheet" type="text/css" href="/css/jquery.growl.css"/>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="/js/jquery.growl.js" type="text/javascript"></script>
 </head>
-
 <body>
 
-<div class="container">
-    <div class="header clearfix">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li id="qsLogoutBtn"><a href="#">Logout</a></li>
-            </ul>
-        </nav>
-        <h3 class="text-muted">Into the Trivia Hole!</h3>
-    </div>
-    <div class="jumbotron">
-        <h3>Hello ${userId}!</h3>
-    </div>
+    <nav>
+        <ul class="nav nav-pills pull-right">
+            <li id="qsLogoutBtn"><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+
     <style>
         body {
             background-image: url('aliceBackground.png');
+        }
+        .qsLogoutBtn {
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border: 5px outset black;
+            border-radius:25px;
+            padding: 5px;
+            width: max-content;
+            margin: auto;
         }
         .question {
             width: max-content;

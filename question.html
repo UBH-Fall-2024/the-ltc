@@ -25,7 +25,7 @@
         width: max-content;
     }
 
-    .Answer {
+    .Answer1 {
         color: black;
         padding: 15px 32px;
         text-align: center;
@@ -135,10 +135,10 @@
  
     var topMargin = 0;
 
-    let l = window.screen.height;
+    let l = window.innerHeight;
 
     function moveDown() {
-        if (margin == l) {
+        if (topMargin >= l) {
             topMargin = 0;
         } else {
             answer.style.marginTop = topMargin + "px";
@@ -147,14 +147,14 @@
     }
     var someVar = 0
 
-    function flashColors() {
+    function flashBackground() {
         if(someVar == 0) {
             someVar = 1;
-            document.body.style.backgroundColor = "blue"
+            document.body.style.backgroundImage = "url('aliceBackground.png')";
 
         } else {
             someVar = 0;
-            document.body.style.backgroundColor = "white"
+            document.body.style.backgroundImage = "url('invertedAliceBackground.png')";
         }
     }
 
@@ -163,7 +163,7 @@
         //{ question: "How many songs are in Alice in Wonderland?", correct: "B", options: ["A. 7", "B. 14", "C. 11", "D. 5"] },
         { question: "What color dress does Alice wear?", correct: "A", options: ["A. Blue and White", "B. Orange And White", "C. Purple and Blue", "D. Red and Blue"] },
         { question: "What is the Queen's full name?", correct: "A", options: ["A. The Queen of Hearts", "B. The Queen of Spades", "C. The Queen of Clubs", "D. The Queen of Diamonds"] },
-        { question: "When was Alice in Wonderland released(animated version)?", correct: "A", options: ["A. 1951", "B. 1965", "C. 1949", "D. 1970"] },
+        { question: "When was Alice in Wonderland released (animated version)?", correct: "A", options: ["A. 1951", "B. 1965", "C. 1949", "D. 1970"] },
         //{ question: "What game does Alice play?", correct: "B", options: ["A. Football", "B. Croquet", "C. Horseshoes", "D. Basketball"] },
         //{ question: "What is the name of Alice's cat?", correct: "A", options: ["A. Dinah", "B. Joey", "C. Aram", "D. Yakub"] },
         //{ question: "Which animal does Alice follow into Wonderland?", correct: "B", options: ["A. A mouse", "B. Rabbit", "C. Horse", "D. Cat"] },
@@ -216,7 +216,7 @@
                 setInterval(moveDown, 90)
             }
             else if (randomPun.localeCompare("flash") == 0){
-                setInterval(flashColors, 1000)
+                setInterval(flashBackground, 1000)
             }
         }
         document.getElementById("score").innerHTML = "Score: " + points + "/" + maxPoints
