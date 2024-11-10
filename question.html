@@ -12,8 +12,8 @@
         text-align: center;
         font-size: 30px;
         border: 5px outset black;
-        border-radius: 25px;
-        padding: 5px;
+        border-radius:25px;
+        padding:5px;
         margin: auto;
         padding-top: 50px;
         padding-bottom: 50px;
@@ -185,6 +185,23 @@
             }
         }
 
+    let trueQ = "";
+    var someVar2 = 0;
+    var isFirstRun = 1;
+    function changeLanguage() {
+        if(isFirstRun == 1) {
+            isFirstRun = 0;
+            trueQ = document.getElementById('question').textContent;
+        }
+        if(someVar2 >= 3) {
+            someVar2 = 1;
+            document.getElementById('question').textContent = trueQ;
+        } else {
+            someVar2++;
+            document.getElementById('question').textContent = "Меня зовут Уолтер Хартвелл Уайт.";
+        }
+    }
+
         const questions = [
             { question: "What is the White Rabbit’s catchphrase?", correct: "D", options: ["A. Let's go, let's go, let's go!", "B. Hurry up, hurry up, hurry up!", "C. My time has come! ", "D. I'm late, I'm late, I'm late!"] },
             //{ question: "How many songs are in Alice in Wonderland?", correct: "B", options: ["A. 7", "B. 14", "C. 11", "D. 5"] },
@@ -246,6 +263,11 @@
                 }
                 else if (randomPun.localeCompare("flash") == 0) {
                     invertBackground = setInterval(flashBackground, 120)
+
+                setInterval(flashBackground, 120)
+            } 
+            else if(randomPun.localeCompare("lang") == 0){
+                setInterval(changeLanguage, 1000)
                 }
             }
             document.getElementById("score").innerHTML = "Score: " + points + "/" + maxPoints
