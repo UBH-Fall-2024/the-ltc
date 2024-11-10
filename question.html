@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
+
     body {
         background-image: url('aliceBackground.png');
     }
@@ -75,7 +76,7 @@
     WonderLand Trivia
 </title>
 
-<body></body>
+<body id = "bod"></body>
 <div id="score" class="score">
     Score: 0/2500
 </div>
@@ -129,14 +130,14 @@
     }
     var someVar = 0
 
-    function flashColors() {
+    function flashBackground() {
         if(someVar == 0) {
             someVar = 1;
-            document.body.style.backgroundColor = "blue"
+            document.getElementById("bod").style.backgroundImage = "url(invertedAliceBackground)";
 
         } else {
             someVar = 0;
-            document.body.style.backgroundColor = "white"
+            document.getElementById("bod").style.backgroundImage = "url(aliceBackground)";
         }
     }
 
@@ -190,7 +191,7 @@
             points += 100
         }
         else {
-            randomPun = punishments[Math.floor(Math.random() * punishments.length - 1)]
+            randomPun = punishments[Math.floor(Math.random() * punishments.length)]
             if (randomPun.localeCompare("right") == 0){
                 setInterval(moveRight, 90)
             }
@@ -198,7 +199,7 @@
                 setInterval(moveDown, 90)
             }
             else if (randomPun.localeCompare("flash") == 0){
-                setInterval(flashColors, 1000)
+                setInterval(flashBackground, 1000)
             }
         }
         document.getElementById("score").innerHTML = "Score: " + points + "/" + maxPoints
