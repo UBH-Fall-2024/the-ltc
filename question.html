@@ -14,6 +14,8 @@
         border-radius:25px;
         padding:5px;
         margin: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 
     .score {
@@ -24,52 +26,68 @@
     }
 
     .Answer {
-        border: none;
         color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
+        border: 5px outset black;
+        border-radius:25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
     }
 
-    /* .Answer2 {
-        border: none;
+     .Answer2 {
         color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
+        border: 5px outset black;
+        border-radius:25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
     }
 
     .Answer3 {
-        border: none;
         color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
+        border: 5px outset black;
+        border-radius:25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
     }
 
     .Answer4 {
-        border: none;
         color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
-    } */
+        border: 5px outset black;
+        border-radius:25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
+    } 
 </style>
 <title>
     WonderLand Trivia
@@ -84,16 +102,16 @@
         Question: What color is Alice and wonderlands hair?
     </h1>
 </div>
-<button id="answer1" class="Answer" onclick="checkAnswer(1)">
+<button id="answer1" class="Answer1" onclick="checkAnswer(1)">
     Answer A
 </button>
-<button id="answer2" class="Answer" onclick="checkAnswer(2)">
+<button id="answer2" class="Answer2" onclick="checkAnswer(2)">
     Answer B
 </button>
-<button id="answer3" class="Answer" onclick="checkAnswer(3)">
+<button id="answer3" class="Answer3" onclick="checkAnswer(3)">
     Answer C
 </button>
-<button id="answer4" class="Answer" onclick="checkAnswer(4)">
+<button id="answer4" class="Answer4" onclick="checkAnswer(4)">
     Answer D
 </button>
 <script>
@@ -190,7 +208,7 @@
             points += 100
         }
         else {
-            randomPun = punishments[Math.floor(Math.random() * punishments.length - 1)]
+            randomPun = punishments[Math.floor(Math.random() * punishments.length)]
             if (randomPun.localeCompare("right") == 0){
                 setInterval(moveRight, 90)
             }
