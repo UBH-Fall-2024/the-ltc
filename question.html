@@ -138,7 +138,6 @@
         let w = window.innerWidth;
 
         function moveRight() {
-            console.log(w);
             if (margin >= w) {
                 margin = -500;
             } else {
@@ -185,22 +184,27 @@
             }
         }
 
-    let trueQ = "";
-    var someVar2 = 0;
-    var isFirstRun = 1;
-    function changeLanguage() {
-        if(isFirstRun == 1) {
-            isFirstRun = 0;
-            trueQ = document.getElementById('question').textContent;
+        let trueQ = "";
+        var someVar2 = 0;
+        var langIsFirstRun = 1;
+        const lang = ["Меня зовут Уолтер Хартвелл Уайт?", "私の名前はウォルター・ハートウェル・ホワイトです?", "मेरा नाम वाल्टर हार्टवेल व्हाइट है?", "ངའི་མིང་ལ་ཝོལ་ཊར་ཧར་ཊི་ཝེལ་ཝའིཊ་ཟེར།?", "મારું નામ વોલ્ટર હાર્ટવેલ વ્હાઇટ છે?"]
+        function changeLanguage() {
+            if(langIsFirstRun == 1) {
+                langIsFirstRun = 0;
+                trueQ = document.getElementById('question').textContent;
+            }
+            if(someVar2 == 0) {
+                someVar2++;
+                let sext = lang[Math.floor(Math.random() * lang.length)]
+                document.getElementById('question').textContent = sext;
+            }
+            else if(someVar2 <= 1) {
+                someVar2++;
+                document.getElementById('question').textContent = trueQ;
+            } else {
+                someVar2 = -3;
+            }
         }
-        if(someVar2 >= 3) {
-            someVar2 = 1;
-            document.getElementById('question').textContent = trueQ;
-        } else {
-            someVar2++;
-            document.getElementById('question').textContent = "Меня зовут Уолтер Хартвелл Уайт.";
-        }
-    }
 
         const questions = [
             { question: "What is the White Rabbit’s catchphrase?", correct: "D", options: ["A. Let's go, let's go, let's go!", "B. Hurry up, hurry up, hurry up!", "C. My time has come! ", "D. I'm late, I'm late, I'm late!"] },
@@ -229,7 +233,7 @@
             { question: "Which character did not appear in Alice in Wonderland's book?", correct: "A", options: ["The Doorknob", "The Dormouse", "The Dodo", "The Frog-Footman"] },
             { question: "Where is a hidden Mickey in the movie?", correct: "C", options: ["A. In the scene where Alice meets the caterpiller it is behind a leaf stem.", "In the scene where Alice meets the Cheshire Cat, it is visable next to a sign on the tree.", "C.  In the scene where Alice grows and gets stuck in the White Rabbit's house, in Dodo bird's pipe flame", "D. In the tea party scene, it is inside the incriptions of the tea pots"] }
         ];
-        const punishments = ["right", "down", "flash"]
+        const punishments = ["right", "down", "flash", "lang"]
 
         function loadNewQuestion() {
             if (i < questionCount-1) {
@@ -240,6 +244,7 @@
                 document.getElementById("answer2").innerHTML = questions[i].options[1]
                 document.getElementById("answer3").innerHTML = questions[i].options[2]
                 document.getElementById("answer4").innerHTML = questions[i].options[3]
+                trueQ = document.getElementById('question').textContent;
             }
             else {
                 alert("Game Over!")
