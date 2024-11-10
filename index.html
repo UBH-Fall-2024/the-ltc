@@ -14,7 +14,7 @@
     <label for="username">Username:</label>
     <input type="text" id="username" required><br><br>
     
-    <label for="numQuestions" class="slider">Number of Questions: <span id="questionCount">10</span></label>
+    <label for="numQuestions" class="slider">Number of Questions: <span id="questionCount">15</span></label>
     <input type="range" min="10" max="25" value="15" class="slider" id="numQuestions" oninput="updateQuestionCount()"><br><br>
     
     <input type="submit" value="Start Trivia" id="start-button">
@@ -39,10 +39,7 @@ function updateQuestionCount() {
         localStorage.setItem('username',username);
         localStorage.setItem('questions',numQuestions);
 
-        window.location.href = "question.html";
-
-        firstRun(username,numQuestions);
-        
+        window.location.href = "question.html";   
     }
 </script>
 
