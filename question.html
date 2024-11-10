@@ -14,6 +14,8 @@
         border-radius:25px;
         padding:5px;
         margin: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 
     .score {
@@ -24,52 +26,68 @@
     }
 
     .Answer {
-        border: none;
         color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
+        border: 5px outset black;
+        border-radius:25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
     }
 
-    /* .Answer2 {
-        border: none;
+     .Answer2 {
         color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
+        border: 5px outset black;
+        border-radius:25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
     }
 
     .Answer3 {
-        border: none;
         color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
+        border: 5px outset black;
+        border-radius:25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
     }
 
     .Answer4 {
-        border: none;
         color: black;
         padding: 15px 32px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
         font-size: 16px;
-        margin: 4px 2px;
         cursor: pointer;
-    } */
+        border: 5px outset black;
+        border-radius:25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
+    } 
 </style>
 <title>
     WonderLand Trivia
@@ -84,16 +102,16 @@
         Question: What color is Alice and wonderlands hair?
     </h1>
 </div>
-<button id="answer1" class="Answer" onclick="checkAnswer(1)">
+<button id="answer1" class="Answer1" onclick="checkAnswer(1)">
     Answer A
 </button>
-<button id="answer2" class="Answer" onclick="checkAnswer(2)">
+<button id="answer2" class="Answer2" onclick="checkAnswer(2)">
     Answer B
 </button>
-<button id="answer3" class="Answer" onclick="checkAnswer(3)">
+<button id="answer3" class="Answer3" onclick="checkAnswer(3)">
     Answer C
 </button>
-<button id="answer4" class="Answer" onclick="checkAnswer(4)">
+<button id="answer4" class="Answer4" onclick="checkAnswer(4)">
     Answer D
 </button>
 <script>
@@ -150,14 +168,14 @@
         //{ question: "What game does Alice play?", correct: "B", options: ["A. Football", "B. Croquet", "C. Horseshoes", "D. Basketball"] },
         //{ question: "What is the name of Alice's cat?", correct: "A", options: ["A. Dinah", "B. Joey", "C. Aram", "D. Yakub"] },
         //{ question: "Which animal does Alice follow into Wonderland?", correct: "B", options: ["A. A mouse", "B. Rabbit", "C. Horse", "D. Cat"] },
-        { question: "Who wrote Alice’s Adventures in Wonderland", correct: "C", options: ["A. James Franklin", "B. Mark Danielowski", "C. Lewis Carroll", "D. Cathy Newman"] },
+        { question: "Who wrote Alice’s Adventures in Wonderland?", correct: "C", options: ["A. James Franklin", "B. Mark Danielowski", "C. Lewis Carroll", "D. Cathy Newman"] },
         //{ question: "What type of flower conducts the floral orchestra?", correct: "B", options: ["A. Lily", "B. Rose", "C. Daisy", "D. Orchid"] },
         //{ question: "According to the Queen of Hearts, people over what height are not permitted in the court?", correct: "D", options: ["A. One meter", "A yard", "A foot", "A mile"] },
         //{ question: "What beloved item did the March Hare destroy?", correct: "C", options: ["A. Key", "B. Clock", "C. Pocket Watch", "D. Bracelet"] },
         //{ question: "What is the first thing the Mad Hatter does to the White Rabbit's watch?", correct: "D", options: ["A. Eats it", "B. Throws it away", "C. Kicks it", "D. Dunks it in tea"] },
         //{ question: "Why couldn't the White Queen defeat the Jabberwocky herself?", correct: "A", options: ["A. It was against her vows", "B. She was tired", "C. She couldn't find her", "D. She didn't have the time"] },
         //{ question: "Which character sings 'Twas Brillig'?", correct: "B", options: ["A. The Caterpillar", "B. The Cheshire Cat", "C. Tweedledum and Tweedledee", "D. The March Hare"] },
-        { question: "How tall is the caterpillar?", correct: "D.", options: ["A. One foot", "B. Four inches", "C. Nine inches", "D. 2 Feet"] },
+        { question: "How tall is the caterpillar?", correct: "D.", options: ["A. One foot", "B. Three inches", "C. Nine inches", "D. 2 Feet"] },
         //{ question: "Where is the Red Queen's castle?", correct: "A", options: ["A. Salazen Grum", "B. Tulgey Wood", "C. Marmoreal", "D. The Stable"] },
         //{ question: "What is the name of the \"Lizard with the ladder\"?", correct: "A", options: ["A. Bill", "B. Smith", "C. Himzel", "D. Lizzy"] },
         { question: "What two animals were used in the croquet game?", correct: "B. ", options: ["A. Owl and Caterpiller", "B. Flamingo and hedgehog", "C. Dog and Cat", "D. Kittyo and Car"] },
@@ -191,7 +209,7 @@
             points += 100
         }
         else {
-            randomPun = punishments[Math.floor(Math.random() * punishments.length - 1)]
+            randomPun = punishments[Math.floor(Math.random() * punishments.length)]
             if (randomPun.localeCompare("right") == 0){
                 setInterval(moveRight, 90)
             }
