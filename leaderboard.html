@@ -15,7 +15,8 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- CSV data will populate here -->
+               <!--INSERT TR's -->
+
             </tbody>
     </table>
     </body>
@@ -24,43 +25,38 @@
 
 
 <script>
- // Load the CSV file when the page loads
- document.addEventListener('DOMContentLoaded', loadCSV);
 
-function loadCSV() {
-    fetch('rankings.csv')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(csvData => populateTable(csvData))
-        .catch(error => console.error('Error fetching the CSV file:', error));
+const hashMap = new Map([
+    ['Alice',1800],
+    ['Doorknob',0],
+    ['Dodo',600],
+    ['Baby Shark',200],
+    ['Steve',2000]
+
+]);
+
+function addPlayerScore(username,score){
+    hashMap.set(username,score);
 }
 
-function populateTable(csvData) {
-    const tableBody = document.getElementById('table').querySelector('tbody');
-    tableBody.innerHTML = ''; // Clear any existing data
+function createTableRows(hashMap) {
+    // Convert the Map to an array and sort it by values in descending order
+    const sortedEntries = Array.from(hashMap).sort((a, b) => b[1] - a[1]);
 
-    const rows = csvData.trim().split('\n');
-    rows.forEach(row => {
-        const [username, points] = row.split(',');
-        if (username && points) {
-            const newRow = document.createElement('tr');
-            
-            const usernameCell = document.createElement('td');
-            usernameCell.textContent = username.trim();
-            newRow.appendChild(usernameCell);
-
-            const pointsCell = document.createElement('td');
-            pointsCell.textContent = points.trim();
-            newRow.appendChild(pointsCell);
-
-            tableBody.appendChild(newRow);
-        }
-    });
+    // Map each entry to a <tr> element as a string
+    return sortedEntries.map(([key, value]) => {
+        return `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }).join('');
 }
+
+
+// Get the table's <tbody> element
+const tableBody = document.querySelector('#table tbody');
+
+// Generate the rows and insert them into the <tbody>
+tableBody.innerHTML = createTableRows(hashMap);
+
+
 </script>
 
 </html>
