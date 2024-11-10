@@ -293,8 +293,8 @@
             document.getElementById("answer4").innerHTML = questions[i].options[3]
         }
         let username = name;
-        let questionCount = 5;
-        firstRun("name", 10);
+        
+        firstRun(localStorage.getItem('username'), localStorage.getItem('numQuestions'));
     </script>
 
 </html>

@@ -36,6 +36,9 @@ function updateQuestionCount() {
         const username = document.getElementById("username").value;
         const numQuestions = document.getElementById("numQuestions").value;
 
+        localStorage.setItem('username',username);
+        localStorage.setItem('questions',numQuestions);
+
         window.location.href = "question.html";
 
         firstRun(username,numQuestions);
