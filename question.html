@@ -106,7 +106,6 @@
     }
     let answer = document.getElementById("answer1");
  
-    var myVar = setInterval(moveDown, 90);
     var topMargin = 0;
 
     let l = window.screen.height;
@@ -119,23 +118,16 @@
         }
         topMargin += 10;
     }
-    someVar = 0
-
-    var nextVar = setInterval(flashColors, 1000);
+    var someVar = 0
 
     function flashColors() {
-
         if(someVar == 0) {
-
             someVar = 1;
-
             document.body.style.backgroundColor = "blue"
 
         } else {
-
             someVar = 0;
-
-        document.body.style.backgroundColor = "white"
+            document.body.style.backgroundColor = "white"
         }
     }
     const questions = [
@@ -165,8 +157,7 @@
         { question: "Which character did not appear in Alice in Wonderland's book?", correct: "A", options: ["The Doorknob", "The Dormouse", "The Dodo", "The Frog-Footman"] },
         { question: "Where is a hidden Mickey in the movie?", correct: "C", options: ["A. In the scene where Alice meets the caterpiller it is behind a leaf stem.", "In the scene where Alice meets the Cheshire Cat, it is visable next to a sign on the tree.", "C.  In the scene where Alice grows and gets stuck in the White Rabbit's house, in Dodo bird's pipe flame", "D. In the tea party scene, it is inside the incriptions of the tea pots"] }
     ];
-    //const punishments = []
-
+    const punishments = ["right", "down", "flash"]
 
     function loadNewQuestion() {
         if (i < questions.length - 1) {
@@ -189,14 +180,24 @@
             points += 100
         }
         else {
-            setInterval(moveRight, 90)
-            setInterval(moveDown, 90)
+            randomPun = punishments[Math.floor(Math.random() * punishments.length - 1)]
+            if (randomPun.localeCompare("right") == 0){
+                setInterval(moveRight, 90)
+            }
+            else if (randomPun.localeCompare("down") == 0){
+                setInterval(moveDown, 90)
+            }
+            else if (randomPun.localeCompare("flash") == 0){
+                setInterval(flashColors, 1000)
+            }
         }
-        document.getElementById("score").innerHTML = "Score: " + points + "/2500"
+        document.getElementById("score").innerHTML = "Score: " + points + "/" + maxPoints
         loadNewQuestion()
     }
     function firstRun() {
+        maxPoints = 2500;
         i = 0
+        document.getElementById("score").innerHTML = "Score: " + points + "/" + maxPoints
         document.getElementById("question").innerHTML = questions[i].question
         document.getElementById("answer1").innerHTML = questions[i].options[0]
         document.getElementById("answer2").innerHTML = questions[i].options[1]
