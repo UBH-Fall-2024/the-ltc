@@ -146,11 +146,22 @@
         }
         topMargin += 10;
     }
+
     var someVar = 0
 
     function flashBackground() {
         if(someVar == 0) {
-            someVar = 1;
+            someVar++;
+            document.getElementById('bod').style.backgroundImage = "url(aliceBackground.png)";
+        } else if(someVar == 1) {
+            someVar++;
+            document.getElementById('bod').style.backgroundImage = "url(invertedAliceBackground.png)";
+        } else if(someVar == 2) {
+            someVar++;
+            document.getElementById('bod').style.backgroundImage = "url(aliceBackground.png)";
+        }
+        else if(someVar <= 15) {
+            someVar++;
             document.getElementById('bod').style.backgroundImage = "url(invertedAliceBackground.png)";
 
         } else {
@@ -217,7 +228,7 @@
                 setInterval(moveDown, 90)
             }
             else if (randomPun.localeCompare("flash") == 0){
-                setInterval(flashBackground, 1000)
+                setInterval(flashBackground, 120)
             }
         }
         document.getElementById("score").innerHTML = "Score: " + points + "/" + maxPoints
