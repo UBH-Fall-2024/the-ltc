@@ -8,7 +8,7 @@
     .question {
         width: max-content;
         height: 100%;
-        background-color: lightblue;
+        background-color: rgb(173, 216, 230,0.7) ;
         text-align: center;
         font-size: 30px;
         border: 5px outset black;
@@ -17,6 +17,7 @@
         margin: auto;
         padding-top: 50px;
         padding-bottom: 50px;
+        background-blend-mode: color;
     }
 
     .score {
@@ -100,7 +101,7 @@
 </div>
 <div id="question" class="question">
     <h1>
-        Question: What color is Alice and wonderlands hair?
+        Question
     </h1>
 </div>
 <button id="answer1" class="Answer1" onclick="checkAnswer(1)">
@@ -117,14 +118,14 @@
 </button>
 <script>
     let questionElement = document.getElementById("question");
+    const rect = question.getBoundingClientRect();
+    var margin = rect.left + window.scrollX;
 
-    var margin = 0;
-
-    let w = 1300;
+    let w = window.innerWidth;
 
     function moveRight() {
         console.log(w);
-        if (margin == w) {
+        if (margin >= w) {
             margin = 0;
         } else {
             questionElement.style.marginLeft = margin + "px";
@@ -152,21 +153,21 @@
     function flashBackground() {
         if(someVar == 0) {
             someVar++;
-            document.getElementById('bod').style.backgroundImage = "url(aliceBackground.png)";
+            document.body.style.backgroundImage = "url(aliceBackground.png)";
         } else if(someVar == 1) {
             someVar++;
-            document.body.style.backgroundImage = "url('aliceBackground.png'.png)";
+            document.body.style.backgroundImage = "url('aliceBackground.png')";
         } else if(someVar == 2) {
             someVar++;
-            document.getElementById('bod').style.backgroundImage = "url(aliceBackground.png)";
+            document.body.style.backgroundImage = "url(aliceBackground.png)";
         }
         else if(someVar <= 15) {
             someVar++;
-            document.getElementById('bod').style.backgroundImage = "url(invertedAliceBackground.png)";
+            document.body.style.backgroundImage = "url(invertedAliceBackground.png)";
 
         } else {
             someVar = 0;
-            document.body.style.backgroundImage = "url('invertedAliceBackground.png'.png)";
+            document.body.style.backgroundImage = "url('invertedAliceBackground.png')";
         }
     }
 
@@ -201,7 +202,7 @@
 
     function loadNewQuestion() {
         if (i < questions.length - 1) {
-            margin = 0;
+            margin = rect.left + window.scrollX;
             i += 1
             document.getElementById("question").innerHTML = questions[i].question
             document.getElementById("answer1").innerHTML = questions[i].options[0]
@@ -211,6 +212,8 @@
         }
         else {
             alert("Game Over!")
+            clearInterval()
+            document.body.backgroundImage = "url('aliceBackground.png')";
             document.write("Your score: " + points)
         }
     }
@@ -228,7 +231,7 @@
                 setInterval(moveDown, 90)
             }
             else if (randomPun.localeCompare("flash") == 0){
-                setInterval(flashBackground, 120)
+                invertBackground = setInterval(flashBackground, 120)
             }
         }
         document.getElementById("score").innerHTML = "Score: " + points + "/" + maxPoints
@@ -245,6 +248,5 @@
         document.getElementById("answer4").innerHTML = questions[i].options[3]
     }
     firstRun();
-}
 </script>
 </html>
