@@ -1,0 +1,76 @@
+<!--
+UNICODE USED:
+Unicode Character “🏆” (U+1F3C6) - &#127942
+-->
+
+<html>
+    <head>
+        <link rel = "stylesheet" type="text/css" href="leaderboard.css">
+        <link rel="icon" type="image/x-icon" href="fav.ico">
+        <title>Current Rankings</title>
+    </head>
+    <br>
+    <div id = "div">
+        <h1 class ="general" id="h1">&#127942; Current Rankings &#127942;</h1>
+    </div>
+    <body>
+        <br><br><br>
+            <table class="general" id="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <!--INSERT TR's -->
+    
+                </tbody>
+        </table>
+        <div class="center">
+            <button id="playAgain" class="playAgain" onclick="location.href='index.html'">
+                Play Again?
+            </button>
+        </div>
+    </body>
+
+
+
+
+<script>
+
+const hashMap = new Map([
+    ['Alice',1800],
+    ['Doorknob',0],
+    ['Dodo',600],
+    ['Baby Shark',200],
+    ['Steve',2000]
+
+]);
+
+function addPlayerScore(username,score){
+    hashMap.set(username,score);
+}
+
+function createTableRows(hashMap) {
+    // Convert the Map to an array and sort it by values in descending order
+    const sortedEntries = Array.from(hashMap).sort((a, b) => b[1] - a[1]);
+
+    // Map each entry to a <tr> element as a string
+    return sortedEntries.map(([key, value]) => {
+        return `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }).join('');
+}
+
+addPlayerScore(localStorage.getItem("username"),localStorage.getItem("finalScore"));
+
+// Get the table's <tbody> element
+const tableBody = document.querySelector('#table tbody');
+
+// Generate the rows and insert them into the <tbody>
+tableBody.innerHTML = createTableRows(hashMap);
+
+
+</script>
+
+</html>

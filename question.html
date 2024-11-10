@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <!-- creates the css to make the trivia game themed and centered-->
+<style>
+    body {
+        background-image: url('aliceBackground.png');
+    }
+
+    .question {
+        width: max-content;
+        height: 100%;
+        background-color: rgb(235, 201, 109, 0.7) ;
+        text-align: center;
+        font-size: 30px;
+        border: 5px outset black;
+        border-radius: 25px;
+        padding: 5px;
+        margin: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .score {
+        border: 5px outset black;
+        background-color: white;
+        text-align: center;
+        font-size: 25px;
+        width: max-content;
+    }
+
+    .Answer1 {
+        margin: auto;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border: 5px outset black;
+        border-radius: 25px;
+        padding: 5px;
+        width: max-content;
+        margin-top: 25px;
+    }
+
+    .Answer2 {
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border: 5px outset black;
+        border-radius: 25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
+    }
+
+    .Answer3 {
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border: 5px outset black;
+        border-radius: 25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
+    }
+
+    .Answer4 {
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border: 5px outset black;
+        border-radius: 25px;
+        padding: 5px;
+        width: max-content;
+        margin: auto;
+        margin-top: 25px;
+    }
+
+    .center {
+        width: max-content;
+        margin: auto;
+        margin-top: 10px;
+    }
+</style>
+<!-- creates the question box and the 4 answer choices buttons-->
+
+<title>
+    WonderLand Trivia
+</title>
+<head>
+    <link rel="icon" type="image/x-icon" href="fav.ico">
+</head>
+
+<body id="bod">
+    <div id="score" class="score">
+        Score: 0/2500
+    </div>
+    <div id="question" class="question">
+        <h1>
+            Question
+        </h1>
+    </div>
+    <div class="center">
+        <button id="answer1" class="Answer1" onclick="checkAnswer(1)">
+            Answer A
+        </button>
+    </div>
+    <div class="center">
+        <button id="answer2" class="Answer2" onclick="checkAnswer(2)">
+            Answer B
+        </button>
+    </div>
+    <div class="center">
+        <button id="answer3" class="Answer3" onclick="checkAnswer(3)">
+            Answer C
+        </button>
+    </div>
+    <div class="center">
+        <button id="answer4" class="Answer4" onclick="checkAnswer(4)">
+            Answer D
+        </button>
+    </div>
+
+</body>
+
+
+<script>
+    let questionElement = document.getElementById("question");
+    const rect = question.getBoundingClientRect();
+    var margin = rect.left + window.scrollX;
+
+    let w = window.innerWidth;
+     // this will move the question box contuniously to the right
+    function moveRight() {
+        if (margin >= w) {
+            margin = -500;
+        } else {
+            questionElement.style.marginLeft = margin + "px";
+        }
+        margin += 10;
+
+    }
+    //this will move the answers down and go back up after they have gone a certain amount down
+    let answer = document.getElementById("answer1");
+
+    var topMargin = 0;
+
+    let l = window.innerHeight;
+
+    function moveDown() {
+        if (topMargin >= l) {
+            topMargin = 0;
+        } else {
+            answer.style.marginTop = topMargin + "px";
+        }
+        topMargin += 5;
+    }
+
+    var someVar = 0
+    // this will have the background switch from an inverted image and a normal image 
+    function flashBackground() {
+        if (someVar == 0) {
+            someVar++;
+            document.body.style.backgroundImage = "url(aliceBackground.png)";
+            question.style.backgroundColor = 'rgb(235, 201, 109, 0.7)';
+        } else if (someVar == 1) {
+            someVar++;
+            document.body.style.backgroundImage = "url('aliceBackground.png')";
+            question.style.backgroundColor = 'rgb(235, 201, 109, 0.7)';
+
+        } else if (someVar == 2) {
+            someVar++;
+            document.body.style.backgroundImage = "url(aliceBackground.png)";
+            question.style.backgroundColor = 'rgb(235, 201, 109, 0.7)';
+        }
+        else if (someVar <= 15) {
+            someVar++;
+            document.body.style.backgroundImage = "url(invertedAliceBackground.png)";
+            question.style.backgroundColor = 'rgb(173, 216, 230, 0.6)';
+
+        } else {
+            someVar = 0;
+            document.body.style.backgroundImage = "url('invertedAliceBackground.png')";
+            question.style.backgroundColor = 'rgb(173, 216, 230, 0.6)';
+        }
+    }
+
+    let trueQ = "";
+    var someVar2 = 0;
+    var langIsFirstRun = 1;
+    const lang = [
+     "\u041C\u0435\u043D\u044F \u0437\u043E\u0432\u0443\u0442 \u0423\u043E\u043B\u0442\u0435\u0440 \u0425\u0430\u0440\u0442\u0432\u0435\u043B\u043B \u0423\u0430\u0439\u0442?", 
+    "\u79C1\u306E\u540D\u524D\u306F\u30A6\u30AA\u30EB\u30BF\u30FC\u30FB\u30CF\u30FC\u30C8\u30A6\u30A7\u30EB\u30FB\u30DB\u30A4\u30C8\u30A7\u3067\u3059?", 
+    "\u092E\u0947\u0930\u093E \u0928\u093E\u092E \u0935\u093E\u0932\u094D\u091F\u0930 \u0939\u093E\u0930\u094D\u091F\u0935\u0947\u0932 \u0935\u094D\u0939\u093E\u090F\u091F \u0939\u0948?", 
+    "\u0F02\u0F20\u0F31\u0F60\u0F52\u0F30\u0F0D\u0F66\u0F30\u0F67\u0F43\u0F64\u0F68\u0F60\u0F72\u0F71\u0F4F\u0F64\u0F6A\u0F8D?", 
+    "\u0AAE\u0AB0\u0AB1\u0AC1 \u0A8E\u0AAE\u0AB0 \u0AB5\u0A9A\u0ACD\u0A9F\u0AAC\u0A4D\u0A30\u0A47 \u0AB5\u0A9A\u0ACD\u0A9F\u0AAC\u0A4D\u0A30\u0A47 \u0AB5\u0A9F\u0A88?"
+    ]   
+    function changeLanguage() {
+        if (langIsFirstRun == 1) {
+            langIsFirstRun = 0;
+            trueQ = document.getElementById('question').textContent;
+        }
+        if (someVar2 == 0) {
+            someVar2++;
+            let sext = lang[Math.floor(Math.random() * lang.length)]
+            document.getElementById('question').textContent = sext;
+        }
+        else if (someVar2 <= 1) {
+            someVar2++;
+            document.getElementById('question').textContent = trueQ;
+        } else {
+            someVar2 = -3;
+        }
+    }
+    //Initialize a list of all possible questions objects, with their possible answers and correct answers
+    const questions = [
+        { question: "What is the White Rabbit\'s catchphrase?", correct: "D", options: ["A. Let's go, let's go, let's go!", "B. Hurry up, hurry up, hurry up!", "C. My time has come! ", "D. I'm late, I'm late, I'm late!"] },
+        { question: "How many songs are in Alice in Wonderland?", correct: "B", options: ["A. 7", "B. 14", "C. 11", "D. 5"] },
+        { question: "What color dress does Alice wear?", correct: "A", options: ["A. Blue and White", "B. Orange And White", "C. Purple and Blue", "D. Red and Blue"] },
+        { question: "What is the Queen\'s full name?", correct: "D", options: ["A. The Queen of Diamond", "B. The Queen of Spades", "C. The Queen of Clubs", "D. The Queen of Hearts"] },
+        { question: "When was Alice in Wonderland released (animated version)?", correct: "A", options: ["A. 1951", "B. 1965", "C. 1949", "D. 1970"] },
+        { question: "What game does Alice play?", correct: "B", options: ["A. Football", "B. Croquet", "C. Horseshoes", "D. Basketball"] },
+        { question: "What is the name of Alice\'s cat?", correct: "A", options: ["A. Dinah", "B. Joey", "C. Aram", "D. Yakub"] },
+        { question: "Which animal does Alice follow into Wonderland?", correct: "B", options: ["A. Mouse", "B. Rabbit", "C. Horse", "D. Cat"] },
+        { question: "Who wrote Alice\'s Adventures in Wonderland?", correct: "C", options: ["A. James Franklin", "B. Mark Danielowski", "C. Lewis Carroll", "D. Cathy Newman"] },
+        { question: "What type of flower conducts the floral orchestra?", correct: "B", options: ["A. Lily", "B. Rose", "C. Daisy", "D. Orchid"] },
+        { question: "According to the Queen of Hearts, people over what height are not permitted in the court?", correct: "D", options: ["A. One meter", "B. A yard", "C. A foot", "D. A mile"] },
+        { question: "What beloved item did the March Hare destroy?", correct: "C", options: ["A. Key", "B. Clock", "C. Pocket Watch", "D. Bracelet"] },
+        { question: "What is the first thing the Mad Hatter does to the White Rabbit\'s watch?", correct: "D", options: ["A. Eats it", "B. Throws it away", "C. Kicks it", "D. Dunks it in tea"] },
+        { question: "Why couldn\'t the White Queen defeat the Jabberwocky herself?", correct: "A", options: ["A. It was against her vows", "B. She was tired", "C. She couldn't find her", "D. She didn't have the time"] },
+        { question: "Which character sings \'Twas Brillig\'?", correct: "B", options: ["A. The Caterpillar", "B. The Cheshire Cat", "C. Tweedledum and Tweedledee", "D. The March Hare"] },
+        { question: "How tall is the caterpillar?", correct: "D", options: ["A. One foot", "B. Three inches", "C. Nine inches", "D. 2 Feet"] },
+        { question: "Where is the Red Queen\'s castle?", correct: "A", options: ["A. Salazen Grum", "B. Tulgey Wood", "C. Marmoreal", "D. The Stable"] },
+        { question: "What is the name of the \'Lizard with the ladder\'?", correct: "A", options: ["A. Bill", "B. Smith", "C. Himzel", "D. Lizzy"] },
+        { question: "What two animals were used in the croquet game?", correct: "B", options: ["A. Owl and Caterpiller", "B. Flamingo and hedgehog", "C. Dog and Cat", "D. Kittyo and Car"] },
+        { question: "What colour were the roses being painted?", correct: "C", options: ["A. Blue", "B. Purple", "C. Red", "D. Pink"] },
+        { question: "What month was on the calendar behind mother oyster in the oyster bed?", correct: "A", options: ["A. March", "B. October", "C. April", "D. None listed"] },
+        { question: "Which ingredients are in the \'sauce that's fit for kings\'?", correct: "B", options: ["A. Paprika, chili powder, cumin, and white pepper", "B. Pepper, salt, vinegar, peppercorns, and mustard seeds", "C. Mustard grains, apple cider vinegar, and blue salt", "D. Cayenne, starch, and ketchup"] },
+        { question: "The Mad Hatter\'s name is based on what historical basis?", correct: "B", options: ["A. People who wore hats were crazy", "B. Mercury was used in hat making", "C. Hat making as seen as an unskilled profession", "D. Hats were once believed to make people go crazy"] },
+        { question: "Which character did not appear in Alice in Wonderland\'s book?", correct: "A", options: ["A. The Doorknob", "B. The Dormouse", "C. The Dodo", "D. The Frog-Footman"] },
+        { question: "Where is a hidden Mickey in the movie?", correct: "C", options: ["A. In the scene where Alice meets the caterpiller it is behind a leaf stem.", "B. In the scene where Alice meets the Cheshire Cat, it is visable next to a sign on the tree.", "C.  In the scene where Alice grows and gets stuck in the White Rabbit's house, in Dodo bird's pipe flame", "D. In the tea party scene, it is inside the incriptions of the tea pots"] }
+    ];
+    const punishments = ["right", "down", "flash", "lang"]
+
+    function loadNewQuestion() {
+        if (i < questionCount - 1) {
+            margin = rect.left + window.scrollX;
+            i += 1
+            document.getElementById("question").innerHTML = questions[i].question
+            document.getElementById("answer1").innerHTML = questions[i].options[0]
+            document.getElementById("answer2").innerHTML = questions[i].options[1]
+            document.getElementById("answer3").innerHTML = questions[i].options[2]
+            document.getElementById("answer4").innerHTML = questions[i].options[3]
+            trueQ = document.getElementById('question').textContent;
+        }
+        else {
+            localStorage.setItem("finalScore", points);
+            window.location.href = "leaderboard.html";   
+        }
+    }
+    //this checks if you get the right answer and if you get a question wrong it will give you a punishment
+    points = 0
+    function checkAnswer(num) {
+        if (questions[i].correct.localeCompare(questions[i].options[num - 1].charAt(0)) == 0) {
+            points += 100
+        }
+        else {
+            randomPun = punishments[Math.floor(Math.random() * punishments.length)]
+            if (randomPun.localeCompare("right") == 0) {
+                setInterval(moveRight, 90)
+            }
+            else if (randomPun.localeCompare("down") == 0) {
+                setInterval(moveDown, 180)
+            }
+            else if (randomPun.localeCompare("flash") == 0) {
+                invertBackground = setInterval(flashBackground, 120)
+                setInterval(flashBackground, 200)
+            }
+            else if (randomPun.localeCompare("lang") == 0) {
+                setInterval(changeLanguage, 1150)
+            }
+        }
+        document.getElementById("score").innerHTML = username + "'s" + " score: " + points + "/" + maxPoints
+        loadNewQuestion()
+    }
+     //this function will start of the code
+    function firstRun(name, questionNum) {
+        username = name;
+        questionCount = questionNum;
+        maxPoints = questionCount * 100;
+        i = 0
+        document.getElementById("score").innerHTML = username + "'s" + " score: " + points + "/" + maxPoints
+        document.getElementById("question").innerHTML = questions[i].question
+        document.getElementById("answer1").innerHTML = questions[i].options[0]
+        document.getElementById("answer2").innerHTML = questions[i].options[1]
+        document.getElementById("answer3").innerHTML = questions[i].options[2]
+        document.getElementById("answer4").innerHTML = questions[i].options[3]
+    }
+    let username = "name";
+    let questionCount = 5;
+    firstRun(localStorage.getItem('username'), localStorage.getItem('questions'));
+</script>
+
+</html>

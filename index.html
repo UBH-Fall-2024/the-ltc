@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="icon" type="image/x-icon" href="fav.ico">
+</head>
+
+<h1 ><span id="head-text">Into the Trivia Hole</span></h1>
+
+<div id ="user-input">
+
+<form onsubmit="redirectAfterSubmit(event)">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required><br><br>
+    
+    <label for="numQuestions" class="slider">Number of Questions: <span id="questionCount">15</span></label>
+    <input type="range" min="10" max="25" value="15" class="slider" id="numQuestions" oninput="updateQuestionCount()"><br><br>
+    
+    <input type="submit" value="Start Trivia" id="start-button">
+  </form>
+
+</div>
+
+
+<script>
+
+function updateQuestionCount() {
+  const questionCount = document.getElementById('numQuestions').value;
+  document.getElementById('questionCount').textContent = questionCount;
+}
+
+    function redirectAfterSubmit(event){
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const numQuestions = document.getElementById("numQuestions").value;
+
+        localStorage.setItem('username',username);
+        localStorage.setItem('questions',numQuestions);
+
+        window.location.href = "question.html";   
+    }
+</script>
+
+</html>
