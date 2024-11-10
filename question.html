@@ -26,7 +26,7 @@
         width: max-content;
     }
 
-    .Answer11 {
+    .Answer1 {
         color: black;
         padding: 15px 32px;
         text-align: center;
@@ -144,19 +144,30 @@
         } else {
             answer.style.marginTop = topMargin + "px";
         }
-        topMargin += 10;
+        topMargin += 5;
     }
+
     var someVar = 0
 
     function flashBackground() {
     function flashBackground() {
         if(someVar == 0) {
-            someVar = 1;
-            document.body.style.backgroundImage = "url('aliceBackground.png')";
+            someVar++;
+            document.getElementById('bod').style.backgroundImage = "url(aliceBackground.png)";
+        } else if(someVar == 1) {
+            someVar++;
+            document.body.style.backgroundImage = "url('aliceBackground.png'.png)";
+        } else if(someVar == 2) {
+            someVar++;
+            document.getElementById('bod').style.backgroundImage = "url(aliceBackground.png)";
+        }
+        else if(someVar <= 15) {
+            someVar++;
+            document.getElementById('bod').style.backgroundImage = "url(invertedAliceBackground.png)";
 
         } else {
             someVar = 0;
-            document.body.style.backgroundImage = "url('invertedAliceBackground.png')";
+            document.body.style.backgroundImage = "url('invertedAliceBackground.png'.png)";
         }
     }
 
@@ -218,8 +229,7 @@
                 setInterval(moveDown, 90)
             }
             else if (randomPun.localeCompare("flash") == 0){
-                setInterval(flashBackground, 1000)
-                setInterval(flashBackground, 1000)
+                setInterval(flashBackground, 120)
             }
         }
         document.getElementById("score").innerHTML = "Score: " + points + "/" + maxPoints
