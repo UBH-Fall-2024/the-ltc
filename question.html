@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!-- creates the css to make the trivia game themed and centered-->
 <style>
     body {
         background-image: url('aliceBackground.png');
@@ -93,6 +94,8 @@
         margin-top: 10px;
     }
 </style>
+<!-- creates the question box and the 4 answer choices buttons-->
+
 <title>
     WonderLand Trivia
 </title>
@@ -138,7 +141,7 @@
     var margin = rect.left + window.scrollX;
 
     let w = window.innerWidth;
-
+     // this will move the question box contuniously to the right
     function moveRight() {
         if (margin >= w) {
             margin = -500;
@@ -148,6 +151,7 @@
         margin += 10;
 
     }
+    //this will move the answers down and go back up after they have gone a certain amount down
     let answer = document.getElementById("answer1");
 
     var topMargin = 0;
@@ -164,7 +168,7 @@
     }
 
     var someVar = 0
-
+    // this will have the background switch from an inverted image and a normal image 
     function flashBackground() {
         if (someVar == 0) {
             someVar++;
@@ -213,7 +217,7 @@
             someVar2 = -3;
         }
     }
-
+    //Initialize a list of all possible questions objects, with their possible answers and correct answers
     const questions = [
         { question: "What is the White Rabbit’s catchphrase?", correct: "D", options: ["A. Let's go, let's go, let's go!", "B. Hurry up, hurry up, hurry up!", "C. My time has come! ", "D. I'm late, I'm late, I'm late!"] },
         { question: "How many songs are in Alice in Wonderland?", correct: "B", options: ["A. 7", "B. 14", "C. 11", "D. 5"] },
@@ -259,6 +263,7 @@
             window.location.href = "leaderboard.html";   
         }
     }
+    //this checks if you get the right answer and if you get a question wrong it will give you a punishment
     points = 0
     function checkAnswer(num) {
         if (questions[i].correct.localeCompare(questions[i].options[num - 1].charAt(0)) == 0) {
@@ -283,6 +288,7 @@
         document.getElementById("score").innerHTML = username + "'s" + " score: " + points + "/" + maxPoints
         loadNewQuestion()
     }
+     //this function will start of the code
     function firstRun(name, questionNum) {
         username = name;
         questionCount = questionNum;
