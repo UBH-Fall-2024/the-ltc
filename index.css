@@ -4,12 +4,12 @@ body {
 h1{
     width: max-content;
     height: 100%;
-    background-color: rgb(173, 216, 230,0.7) ;
+    background-color: rgb(235 201 109 / 70%) ;
     text-align: center;
     font-size: 30px;
     border: 5px outset black;
     border-radius:25px;
-    padding:5px;
+    padding:25px;
     margin: auto;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -17,12 +17,12 @@ h1{
     margin-top: 3%;
 }
 #head-text{
-    color: #665b23;
+    color: #000000;
 }
 #user-input{
     width: max-content;
     height: 100%;
-    background-color: rgb(235 201 109 / 90%) ;
+    background-color: rgb(235 201 109 / 70%) ;
     text-align: center;
     font-size: 30px;
     border: 5px outset black;
@@ -33,9 +33,6 @@ h1{
     padding-bottom: 50px;
     background-blend-mode: color;
     margin-top: 1%;
-}
-#username-txt{
-
 }
 #start-button{
     color: black;
