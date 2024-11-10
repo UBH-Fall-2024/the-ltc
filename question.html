@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <style>
+
+    body {
+        background-image: url('img/aliceBackgound.png');
+    }
     .question {
         width: max-content;
         height: 100%;
@@ -67,6 +70,8 @@
 <title>
     WonderLand Trivia
 </title>
+
+<body></body>
 <div id="score" class="score">
     Score: 0/2500
 </div>
@@ -118,7 +123,14 @@
         }
         topMargin += 10;
     }
+<<<<<<< Updated upstream
     var someVar = 0
+=======
+
+    someVar = 0
+
+    var nextVar = setInterval(flashColors, 750);
+>>>>>>> Stashed changes
 
     function flashColors() {
         if(someVar == 0) {
@@ -130,6 +142,7 @@
             document.body.style.backgroundColor = "white"
         }
     }
+
     const questions = [
         { question: "What is the White Rabbit’s catchphrase?", correct: "D", options: ["A. Let's go, let's go, let's go!", "B. Hurry up, hurry up, hurry up!", "C. My time has come! ", "D. I'm late, I'm late, I'm late!"] },
         //{ question: "How many songs are in Alice in Wonderland?", correct: "B", options: ["A. 7", "B. 14", "C. 11", "D. 5"] },
